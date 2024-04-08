@@ -1,0 +1,8 @@
+SELECT D.ID, D.EMAIL, D.FIRST_NAME, D.LAST_NAME
+FROM DEVELOPERS D
+WHERE EXISTS ( 
+                SELECT 1
+                FROM SKILLCODES 
+                WHERE CATEGORY = 'Front End' AND CODE & D.SKILL_CODE != 0
+        )
+ORDER BY ID
